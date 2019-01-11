@@ -1,0 +1,35 @@
+from sklearn import  dataset
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.style.use('ggplot')
+
+iris = datasets.load_iris()
+type(iris)
+
+print(iris.keys())
+type(iris.data), type(iris.target)
+
+iris.data.shape
+X = iris.data
+y= iris.target
+
+df = pd.DataFram(X, columns= iris.feature_names)
+print(df.head())
+
+_= pd.scatter_matrix(df, c=y, figsize =[8,8], s= 150, Marker='D')
+
+from sklearn.neighbors import KNeighbors Classifier
+
+knn = KNeighborsClassifiers(n_neighbors=6)
+
+knn.fit(iris['data'], iris['target])
+
+iris['data'].shape
+
+iris['target'].shape
+
+prediction = knn.predict(X_new)
+X_new.shape
+p
