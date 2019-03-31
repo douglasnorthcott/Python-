@@ -1,0 +1,82 @@
+# Keras input and dense layers
+# Inputs
+
+from keras.layers import Input
+
+input_tensor + Input(shape=(1,))
+
+print(input_tensor)
+
+# Outputs
+
+from keras.layers import Dense
+
+output_layer = Dense(1)
+
+print(output_layer)
+
+# Connecting inputs to outputs
+
+from keras.layers import Input, Dense
+
+input_tensor = Input(shape =(1,)
+
+output_layer = Dense(1)
+
+output_tensor = output_layer(input_tensor)
+
+# Build and Compile a Model
+
+# Keras models
+
+from keras.layers import Input, Dense
+
+input_tensor = Input(shape= (1,))
+
+output_tensor = Dense(1)(input_tensor)
+
+from keras.models import Model
+
+model = Model(input_tensor,  output_tensor)
+
+# Compile a model
+
+model.compile(optimizer = 'adam', loss = 'mae')
+
+model.summary()
+
+# Plot model using Keras
+
+input_tensor = Input(shape=(1,))
+
+output_layer = Dense(1, name='Predicted-Score-Diff')
+
+output_tensor = output_layer(input_tensor)
+
+model = Model(input_tensor, output_tensor)
+
+plot_model(model, to_file = 'model.png')
+
+from matplotlib import pyplot as plt
+
+img = plt.imread('model.png')
+
+plt.imshow(img)
+
+plt.show()
+
+import pandas as pd
+
+games_tourney = pd.read_csv('datasets/games_tourney.csv')
+
+games_tourney.head()
+
+# Fit the model
+
+feom pandas import read_csv
+
+games = read_csv('datasets/games_tourney.csv')
+
+model.for(games['seed_diff'], games['score_diff'], batch_size = 64, validation_split = .20, verbose = True)
+
+model.evaluate(games_test['seed_diff'], games_test['score_diff'])
