@@ -42,3 +42,15 @@ model.compile(loss= 'mae', optimizer = 'adam')
 model.fit([train['col1'], train['col2'], train['col3]],  train_data['target'])
 
 model.evaluate([test['col1'], test['col2'], test['col3']], test['target'])
+
+# Embedding Layer
+
+from keras.layers import Embedding
+
+input_tensor = Input(shape= (1,))
+
+n_teams = 10887
+
+embed_layer = Embedding(input_dim = n_teams, input_length= 1, output_dim= 1, name ='Team-Strength-Lookup')
+
+embed_tensor = embed_layer(input_tensor)
