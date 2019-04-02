@@ -54,3 +54,32 @@ n_teams = 10887
 embed_layer = Embedding(input_dim = n_teams, input_length= 1, output_dim= 1, name ='Team-Strength-Lookup')
 
 embed_tensor = embed_layer(input_tensor)
+
+# Flattening 
+
+from keras.layers import Flatten
+
+model = Model(input_tensor, flatten_tensor)
+
+# Shared Layers
+
+input_tensor_1 = Input((1,))
+
+input_tensor_2 = Input((1,))
+
+shared_layer = Dense(1)
+
+output_tensor_1 = shared_layer(input_tensor_1)
+
+output_tensor_2 = shared_layer(input_tensor_2)
+
+# Merge Layers
+
+from keras.layers import Input, Add
+
+in_tensor_1 = Input((1,))
+
+in_tensor_2 = Input((1,))
+
+out_tensor = Add()([in_tensor_1, in_tensor_2])
+
