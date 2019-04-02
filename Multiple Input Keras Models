@@ -83,3 +83,33 @@ in_tensor_2 = Input((1,))
 
 out_tensor = Add()([in_tensor_1, in_tensor_2])
 
+from keras.models import Model
+
+model = Model([ in_tensor_1, in_tensor_2], out_tensor)
+
+model.compile(optimizer= 'adam', loss= 'mean_absolute_error')
+
+# Fit with multiple inputs
+
+model.fit([data_1, data_2], target)
+
+model.predict([np.array([[42]]), np.array([[119]])])
+
+model.evaluate([np.array([[-1]]), np.array([[-2]]), , np.array([[-3]])])
+
+# Enrich the tournament data
+
+in_data_1 = games_tourney['team_1']
+
+in_data_2 = games_tourney['team_2']
+
+in_data_3 = games_tourney['team_3']
+
+pred = regular_season_model.predict([in_data_1, in_data_2, in_data_3,])
+
+games_ tourney['pred'] = pred
+
+games_tourney.head()
+
+games_tourney[['home', 'seed_diff', 'pred']].head()
+
