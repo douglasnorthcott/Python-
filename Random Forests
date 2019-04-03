@@ -1,0 +1,59 @@
+from sklearn.ensemble import RandomForestRegressor
+
+random_forest = RandomForesstRegressor()
+
+random_forest.fit(train_features, train_targets)
+
+print(random_forest.score(train_feature, train_targets))
+
+random_forest = RandomForestRegressor( n_estimators = 200,
+                                      max_depth= 5,
+                                      max_features= 4,
+                                      random_state = 42)
+
+from sklearn.model_selection import ParameterGrid
+
+grid = {'n_estimators':[200], 'max_depth':[3,5], 'max_features':[4,8]}
+
+from pprint import pprint
+
+pprint(list(ParameterGrid(grid)))
+
+### Parameter Grid ###
+
+test_scores = []
+
+for g in ParameterGrid(grid)
+    rfr.set_params(**g)
+    rfr.fit(train_feature, train_targets)
+    test_scores.append(rfr.score(test_feature, test_targets))
+
+best_idx = np.argmax(test_scores)
+
+print(test_scores[best_idx])
+
+print(ParameterGridd(grid)[best_idx])
+
+from sklearn.ensemmble import RandomForestRegressor
+
+random_forest = RandomForestRegressor()
+
+random_forest.fit(train_features, train_targets)
+
+feature_importance= random_forest.feature_importances_
+
+print(feature_importances)
+
+importance= random_forest.feature_importances_
+
+sorted_index = np.argsort(importances)[::-1]]
+
+x = range(len(importancces))
+
+labels = np.array(feature_names)[sorted_index]
+
+plt.bar(x, importances[sorted_index], tick_label= labels)
+
+plt.xticks(rotation = 90)
+
+plt.show() 
