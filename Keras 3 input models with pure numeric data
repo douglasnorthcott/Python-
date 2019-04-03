@@ -15,3 +15,33 @@ train_X = train_data[['home', 'seed_diff', 'pred']]
 train_y = train_data['score_diff']
 
 model.evaluate(test_X, test_y)
+
+### Models with 2 outputs
+
+from keras.layers import Input, Concatenate, Dense
+
+input_tensor= Input(shape= (1,))
+
+output_tensor= Dense(2)(input_tensor)
+
+from keras.models import Model
+
+model = Model(input_tensor, output_tensor)
+
+model.compile(optimizer='adam', loss= 'mean_absolute_error')
+
+X= games_tourney_train[['seed_diff']]
+
+y= games_tourney_train[['score_1', 'score_2']]
+
+model.fit(X, y, epochs=500)
+
+model.get_weight()
+
+X= games_tourney_test[['seed_diff']]
+
+y= games_tourney_test[['score_1', 'score_2']]
+
+model.evaluate(X,y)
+
+
