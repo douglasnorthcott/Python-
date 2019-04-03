@@ -1,0 +1,17 @@
+From keras.layers import Input, Dense
+
+in_tensor = Input(shape= (3,))
+
+out_tensor = Dense(1)(in_tensor)
+
+from keras.models import Model
+
+model = Model(in_tennsor, out_tensor)
+
+model.compile(optimizer = 'adam',  loss= 'mae')
+
+train_X = train_data[['home', 'seed_diff', 'pred']]
+
+train_y = train_data['score_diff']
+
+model.evaluate(test_X, test_y)
