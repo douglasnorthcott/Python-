@@ -44,4 +44,46 @@ y= games_tourney_test[['score_1', 'score_2']]
 
 model.evaluate(X,y)
 
+### Build a regressor/classifier
+
+from keras.layers import Input, Dense
+
+input_tensor =  Input(shapee=(1,))
+
+output_tensor_reg = Dense(1)(input_tensor)
+
+output_tensor_class = Dense(1, activation = 'sigmoid')(output_tensor_reg)
+
+from keras.models import Model
+
+model = Model(input_tensor, [output_tensor_reg, output_tensor_class])
+
+model.compile(loss = ['mean_absolute_error', 'binary_crossentropy'], optimizer = 'adam')
+
+# Fit the coombination of classifier/reggressor
+
+x = games_tourney_train[['score_diff']]
+
+y_reg = games_tourney_train[['score_diff']]
+
+y_class = gamees_tourney_train[['won']] = games
+
+model.fit9x, [y_reg, y_class], epochs=100)
+
+model.get_weights()
+
+from scipy.special import expit as sigmoid
+
+print(sigmoid(1* 0.13870609 + 0.00734114))
+
+## Evaluate Data
+
+x = games_tourney_test[['seed_diff']]
+
+y_reg = games_tourney_test[['score_diff']]
+
+y_class =  games_tourney_test[['won']]
+
+model.evalluate(x, [y_reg, y_class])
+
 
