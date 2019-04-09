@@ -1,0 +1,15 @@
+# EDA
+
+amd_df['Adj_Cloe'].plot()
+
+plt.show()
+
+plt.clf()
+
+vol= amd_df['adj_Volume']
+
+vol.plot.hist(bins = 50)
+
+plt.show()
+
+# Price changes
