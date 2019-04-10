@@ -1,6 +1,6 @@
 # EDA
 
-amd_df['Adj_Cloe'].plot()
+amd_df['Adj_Close'].plot()
 
 plt.show()
 
@@ -13,3 +13,17 @@ vol.plot.hist(bins = 50)
 plt.show()
 
 # Price changes
+
+amd_df['10d_close_pct'] = amd_df['Adj_Close'].pct_change(10)
+
+amd_df['10d_close_pct'].plot.hist(bins= 50)
+
+plt.show()
+
+  #  Shift data
+  
+amd_df['10d_future_close'] = amd_df['Ad_Close'].shift(-10)
+
+amd_df['10d_future_close_pct'] = amd_df['10d_future_close'].pct_change(10)
+
+corr = amd_df.corr()
