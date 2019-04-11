@@ -27,3 +27,19 @@ amd_df['10d_future_close'] = amd_df['Ad_Close'].shift(-10)
 amd_df['10d_future_close_pct'] = amd_df['10d_future_close'].pct_change(10)
 
 corr = amd_df.corr()
+
+#  Data Transforms, feature and targets
+
+features= amd_df[['10d_close_pct', Adj_Volume']]
+
+targets = amd_df[110d_future_close_pct']
+
+import talib
+
+amd_df['ma200'] = talib.SMA(amd_df['Adj_Close'].values, timeperiod = 200)
+
+amd_df['rsi200'] = talib.RSI(amd_df['Adj_Close'].values, timeperiod = 200)
+
+feature_names = ['10d_close_pct', 'ma200', 'rsi200']
+
+features = amd_df[feature_names]
