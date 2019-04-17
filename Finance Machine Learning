@@ -43,3 +43,55 @@ amd_df['rsi200'] = talib.RSI(amd_df['Adj_Close'].values, timeperiod = 200)
 feature_names = ['10d_close_pct', 'ma200', 'rsi200']
 
 features = amd_df[feature_names]
+
+targets = amd_df['10d_future_close_pct']
+
+feature_target_df = amd_df[feature_names + '10d_future_close_pct']
+
+import seaborn as sns
+
+corr = feature_target_df.corr()
+
+sns.heatmap(corr, annot = True)
+
+#Linear modeling
+
+# Make train and test sets
+
+import statsmodels.api as sm
+
+linear_features = sm.add_constant(features)
+
+train_size = int(0.85* targets.shae[0])
+
+train_features = linear_features[:train_size]
+
+train_targets = targets[:train_size]
+
+test_features = linear_features[train_size:]
+
+test_targets = targets[train_size:]
+
+model = sm.OLS(train_targets, train_features)
+
+results = model.fit()
+
+print(results.summary())
+
+print(resullts.pvalues)
+
+# Time Periods
+
+SMA* RSI = amd_df['14-day SMA']* amd_df['14-day RSI']
+
+amd_df['Adj_Volume_1d_change'] = amd_df['Adj_Volume'].pct_change()
+
+one_day_change = amd_df['Adj_Volume_1d_change_SMA'] = talib.SMA(one_day_change, timeperiod = 10)
+
+print(amd_df.index.dayofweek)
+
+import pandas as pd
+
+days_of_week = pd.get_dummies(amd_df.index.dayofweek, preffix = weekday, drop_first= True)
+
+print(days_of _week.head())
