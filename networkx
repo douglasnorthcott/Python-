@@ -1,0 +1,62 @@
+import networkx as nx
+
+G = nx.read_edgelist('american-revolution.txt')
+
+G.edges(data= True)[0:5]
+cust_nodes = [n for n in Gnodes() if  G.node[n]['bipartite']='customers']
+
+G_cust = nx.bipartite.projected_graph(G, cust_nodes)
+
+nx.bipartite.degree_centrality(G, cust_nodes)
+
+cust_nodes = [n for n in G.nodes() if G.nodes[n]['bipartite']=='customers']
+
+prod_nodes = [n for n in G.nodes() if G.node[n]['bipartite'] == products']
+
+mat = nx.bipartite.biadjacency_matrix(G, row_order = cust_nodes, column_order = prod_nodes)
+
+mat@mat.T
+
+####
+
+G.nodes(data=True)
+
+nodelist=[]
+
+for n, d in G.nodes(data= True)
+      node_data = dict()
+      node_data["node"] = n
+      node_data.update(d)
+      nodelist.append(node_data)
+      
+G2 minus G1 = nx.difference(G2, G1)
+G1 minus G2 = nx.difference(G1, G2)
+
+Gs = [.....]
+
+noi = 'customer1'
+
+deg = []
+
+for g in Gs:
+        deg.append(len(g.neighbors(noi)))
+plt.plot(degs)
+plt.show()
+
+####
+
+from collections import defaultdict
+
+d= defaultdict(list)
+
+d['heathrow'].append(0.31)
+
+d['heathrow'].append(0.84)
+
+G= nx.Graph()
+
+G.add_nodes_from(df['products'], biipartite = 'products'
+
+G.add_nodes_from(df['customers'], bippartite = 'customers')
+
+G.add_edges_from(zip(df['customers'], df['products']))
