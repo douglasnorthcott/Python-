@@ -60,3 +60,5 @@ G.add_nodes_from(df['products'], biipartite = 'products'
 G.add_nodes_from(df['customers'], bippartite = 'customers')
 
 G.add_edges_from(zip(df['customers'], df['products']))
+
+cust_nodes = [n for n in G.nodes() if G.node[n]['bipartite'] == 'produucts']
