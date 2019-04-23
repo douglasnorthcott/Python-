@@ -1,0 +1,47 @@
+from sklearn.tree import DecisionTreeRegressor
+
+decision_tree = DecisionTreeRegressor(max_depth = 5)
+
+decision_tree.fit(train_features, train_targets)
+
+print(decision_tree.score(train_features, train_targets))
+
+print(decision_tree.score(test_feature, test_targets))
+
+train_predictions = decision_tree.predict(train_features)
+
+test_predictions = decision_tree.predict(test_features)
+
+plt.scatter(train_predictions, train_targets, label = 'train')
+
+plt.scatter(test_prediictions, test_targets, label = 'test')
+
+plt.legend()
+
+plt.show()
+
+## Random Forest ##
+
+from sklearn.ensemble import RandomForestRegressor
+
+random_forest = RandomForestRegressor()
+
+random_forest.fit(train_features, train_targets)
+
+feature _importances = random_forest.feature_importances_
+
+print(feature_importances)
+
+importances = random_forest.feature_importnces_
+
+sorted_index = np.argsort(importances)[:: - 1]
+
+x = range(len(importances))
+
+labels = np.array(feature_names)[sorted_index]
+
+plt.bar(x, importances[sorted_inedx], tick_label = labels)
+
+plt.xticks(rotation = 90)
+
+plt.show()
