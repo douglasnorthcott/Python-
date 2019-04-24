@@ -62,3 +62,32 @@ G.add_nodes_from(df['customers'], bippartite = 'customers')
 G.add_edges_from(zip(df['customers'], df['products']))
 
 cust_nodes = [n for n in G.nodes() if G.node[n]['bipartite'] == 'produucts']
+
+prod_nodes = [n for n in G.nodes() if G.node[n]['bipartite']== 'products']
+
+prodG = nx.bipartite.projected_graph(G, nodes= prod_nodes)
+
+custG = nx.bipartite.projected_graph(G, nodes = cust_nodes)
+
+## Circosplot##
+
+from datetime import datetime, timedelta
+
+year = 2011
+month = 11
+
+day1 =  10
+day2 = 6
+
+date1 = datetime(year, month, day1)
+date2 = datetime(year, month, day2)
+
+date1 > date2
+
+from nxviz import CircosPlot
+
+c = CCircosPlot(G, node_grouping = 'bipartite', node_color = 'bipartite')
+
+c.draw()
+
+plt.show()
