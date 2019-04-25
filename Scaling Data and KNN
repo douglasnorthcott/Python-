@@ -1,0 +1,9 @@
+# Feature Selection: remove weekdays
+
+print(feature_names)
+
+print(feature_names[:-4])
+
+train_features =  train_features.iloc[:,: -4]
+
+test_features = test_features.iloc[:, :-4]
