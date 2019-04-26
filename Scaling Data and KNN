@@ -29,6 +29,6 @@ plt.show()
 ## Further Neural Networks
 
 from keras.model import Sequential
-from keras.layers importt Dense
+from keras.layers import Dense
 
 model = Sequential()
