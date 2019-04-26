@@ -7,3 +7,28 @@ print(feature_names[:-4])
 train_features =  train_features.iloc[:,: -4]
 
 test_features = test_features.iloc[:, :-4]
+
+## sklearn's Scaler
+
+from sklearn.preprocessing import scaler
+
+sc =scaler()
+
+scaled_test_feature = sc.fit_transform(test_features)
+
+## Making subplots
+
+f, ax = plt.subplots( nrows=2, ncols = 1
+
+train_features.iloc[:, 2], hist(ax = ax[0])
+
+ax[1].hist(scaled_train_features[:, 2])
+
+plt.show()
+
+## Further Neural Networks
+
+from keras.model import Sequential
+from keras.layers importt Dense
+
+model = Sequential()
