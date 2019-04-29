@@ -11,3 +11,56 @@ plt.show()
 
 ### checking out performance ###
 
+from sklearn.metrics import r2_score
+
+train_preds = model.predict(scaled_train_features)
+print(r2_score(train_targets, train_preds))
+
+### Custom loss function
+
+import tensorflow as tf
+
+def mean_squared_error(y_true, y_pred):
+    loss = tf.square(y_true - y_pred)
+    
+    return tf.reduce_mean(loss, axis =-1)
+    
+import keras.losses
+
+keras.losses.mean_squared_error = mean_squared_error
+
+model.compile(optimizer = 'adam', loss = mean_squared_error)
+
+history = model.fit(scaled_train_features, train_targets, epochs = 50)
+tf.less(y_true * y_pred, 0)
+
+def sign_penalty(y_true, y_pred):
+    penalty = 100
+    loss = tf.where(tf.less(y_true * y_pred, 0), \
+    penalty * tf.square(y_true - y_pred), \
+    tf.square(y_true - y_pred))
+    
+    return tf.reduce_mean(loss, axis = -1)
+    
+keras.losses.sign_penalty = sign_penalty
+
+### Using the custom loss  
+
+model = Sequential()
+model.add(Dense(50, input_dim = scaled_train_features.shape[1], activation= 'relu'))
+
+model.add(Dense(10, activation = 'relu'))
+
+model.add(Dense(1, activation = 'linear'))
+
+model.compile(optimizer = 'adam', loss = sign_penalty)
+
+history = model.fit(scaled_train_features, train_tarrgets, epochs = 50
+
+train_preds = model.predict(scaled_train_features)
+
+plt.scatter(train_preds, train_targets)
+
+plt.xlabel('prediictions')
+
+plt.ylabel('actual')
