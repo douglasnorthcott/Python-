@@ -1,0 +1,16 @@
+LOSS = []
+print("Before Training: ")
+   
+epochs = 100
+   
+def train_model(epochs):    
+    for epoch in range(epochs):
+        for x,y in train_loader:
+            yhat = model(x)
+            loss = criterion(yhat, y)
+            LOSS.append(loss.item())
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()     
+train_model(epochs)
+print("After Training: ")
