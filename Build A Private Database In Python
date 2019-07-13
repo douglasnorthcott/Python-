@@ -1,0 +1,10 @@
+database = torch.rand(num_entries) > 0.5
+
+def get_parrallel_db(db, remove _index):
+return torch.cat((db[0:remove_index],
+                  db[remove_index+1:]))
+
+parallel_dbs = list()
+for i in range (len(db)):
+    pdb = get_parrallel_db(db, i)
+    parrallel_dbs.append(pdb)
